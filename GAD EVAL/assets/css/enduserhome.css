@@ -1,0 +1,358 @@
+ body {
+            background-color: #ffffff;
+        }
+
+        .logo-text {
+            font-size: 15px;
+            font-weight: 100;
+            color: black;
+            margin-left: 40px;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .content {
+            padding-right: 30px;
+            max-height: 300px;
+        }
+
+        .sidebar {
+            width: 325px;
+            border-right: 10px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            padding-right: 0px;
+            border-right: 20px;
+        }
+
+        .sidebar-name h2 {
+            text-align: center;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .submitted-section {
+            padding: 12px 16px;
+            padding-left: 70px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .recent-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            margin-left: 65px;
+            max-width: 350px;
+            padding-left: 4px;
+            font-size: 16px;
+        
+        }
+
+        .sidebar-item {
+            padding: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-item.active {
+            background-color: #F3EEFF;
+        }
+    
+        .sidebar-item-icon {
+            align-content: center;
+            margin-right: 10px;
+        }
+
+        .sidebar-item .icon {
+            text-align: right;
+            color: #6141AC;
+        }
+
+        .search-bar {
+            width: 85%;
+            height: 30px;
+            padding: 10px;
+            border: 1px solid #6141AC;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .welcome-bar {
+            margin-bottom: 30px;
+        }
+
+        .upload-btn {
+            background-color: #894FB5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        #uploadForm {
+        position: fixed;
+        display: none;
+        max-width: 800px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #F8EAFC;
+        max-height: 500px;
+        overflow-y: auto;
+        z-index: 100;
+        }
+
+        .form-header {
+        background-color: #894FB5;
+        color: white;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: 600;
+        }
+
+        .form-body {
+        padding: 10px 15px;
+        }
+
+        .form-group,
+        .text-block,
+        .radio-group {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 8px;
+        }
+
+        .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="url"] {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-bottom: 1px solid #000;
+            background-color: transparent;
+            outline: none;
+            padding-bottom: 10px; /* Added padding to prevent line overlap */
+            box-sizing: border-box; /* Ensures padding doesn't affect layout unexpectedly */
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .form-row .form-group {
+        flex: 1;
+        min-width: 45%;
+        }
+
+        .radio-group label {
+        display: block;
+        margin-bottom: 5px;
+        }
+
+        .radio-group label strong {
+        font-weight: 600;
+        }
+
+        /* Custom date range styling */
+        .date-range-wrapper {
+        display: flex;
+        align-items: center;
+        background-color: #f0f0f5;
+        border-radius: 6px;
+        padding: 6px 10px;
+        gap: 6px;
+        }
+
+        .date-input {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-family: inherit;
+        font-size: 14px;
+        color: #555;
+        width: 100%;
+        min-width: 120px;
+        }
+
+        .date-separator {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 5px 40px;
+            background-color: #ffffff;
+            border: 1px solid #6141ac;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background-color: #C9C5D8;
+            color: #000000;
+        }
+
+        .filters {
+            display: inline-flex;
+        }
+   
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .table-container {
+            max-height: 325px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        thead {
+            position: sticky;
+            background-color: #F3EEFF;
+            top: 0;
+        }
+
+        th {
+            font-weight: normal;
+            padding: 10px;
+            padding-left: 25px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+    
+        td {
+            font-size: 15px;
+            padding: 25px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+    
+        tbody tr:hover {
+            background-color: #f8f8f8;
+            cursor: pointer;
+        }
+
+        .status-pending {
+            color: red;
+        }   
+
+        .pagination {
+            padding-left: 80px;
+            padding-top: 20px;
+            background-color: #ffffff;
+        }
+
+        .submit-btn {
+            background-color: #894FB5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .text-block {
+            padding: 10px;
+        }
+
+        .view-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            padding-left: 15px;
+        }
+
+        .modal-overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-box {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body p {
+            margin: 8px 0;
+        }
+
+        .modal-footer {
+            text-align: right;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #7e22ce;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pap-link { color: black; text-decoration: none; transition: color 0.3s; }
+        .pap-link:hover { color: #0d6efd; text-decoration: none; }

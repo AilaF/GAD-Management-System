@@ -26,22 +26,32 @@ if (isset($_SESSION['adminID'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/admin.css">
-    <link rel="stylesheet" href="../../assets/css/globalstyles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="header-admin.css">
+    <link rel="stylesheet" href="globalstyles.css">
     <title>GAD Management Information System</title>
-   
+
+
+ 
 </head>
 <body style="overflow: hidden;">
     <div class="view">
-        <div class="header">
+        <div class="header" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 16px;">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="../../assets/img/logo.svg" alt="GAD Logo" width="100" height="100">
+                    <img src="img/logo.svg" alt="GAD Logo" width="80" height="80">
                 </div>
-                <div class="logo-text">GAD Management Information System</div>
             </div>  
-           <div class="header-actions">
-                <div class="header-icon-container">
+             <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-item active">Dashboard</a></li>
+                    <li><a href="admin-usrmgt.php" class="nav-item">Manage users</a></li>
+                    <li><a href="admin-papseval.html" class="nav-item">Track PAPs</a></li>
+                    <li><a href="adminscoresheet.php" class="nav-item">Scoresheet</a></li>
+                </ul>
+            </nav>
+          <div class="header-actions" style="display: flex; gap: 8px;">
+            <div class="header-icon-container" style="display: flex; align-items: center; gap: 6px;">
                     <button class="icon-button" style="position: relative;" data-tooltip="<?php echo $adminTooltip; ?>" onmouseover="this.querySelector('.tooltip').style.display='block'" onmouseout="this.querySelector('.tooltip').style.display='none'">
                         <div class="tooltip" style="display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.8); color: white; padding: 6px 8px; border-radius: 4px; font-size: 11px; white-space: nowrap; z-index: 1000; margin-top: 5px; pointer-events: none;"><?php echo $adminTooltip; ?></div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +59,6 @@ if (isset($_SESSION['adminID'])) {
                             <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#8458B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                    <span class="header-icon-text">Admin</span>
                 </div>
                     <div class="header-icon-container">
                     <button class="icon-button" id="notification-button" title="Notifications">
@@ -58,7 +67,7 @@ if (isset($_SESSION['adminID'])) {
                             <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" stroke="#8458B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                    <span class="header-icon-text">Notifications</span>
+                    <span class="header-icon-text"></span>
                 </div>
                 <div class="header-icon-container">
                     <button class="icon-button" id="menu-button" title="Log out">
@@ -68,64 +77,10 @@ if (isset($_SESSION['adminID'])) {
                             <path d="M21 12H9" stroke="#8458B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                    <span class="header-icon-text">Log out</span>
+                    <span class="header-icon-text"></span>
                 </div>
             </div>
         </div>
-        
-        <div class="content">
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M53.3333 66.6667V60C53.3333 56.4638 51.9286 53.0724 49.4281 50.5719C46.9276 48.0714 43.5362 46.6667 40 46.6667H20C16.4638 46.6667 13.0724 48.0714 10.5719 50.5719C8.07142 53.0724 6.66666 56.4638 6.66666 60V66.6667" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M30 33.3333C37.3638 33.3333 43.3333 27.3638 43.3333 20C43.3333 12.6362 37.3638 6.66666 30 6.66666C22.6362 6.66666 16.6667 12.6362 16.6667 20C16.6667 27.3638 22.6362 33.3333 30 33.3333Z" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M73.3333 66.6667V60C73.3318 57.0961 72.3638 54.2747 70.5798 52.0035C68.7957 49.7323 66.2922 48.1531 63.4833 47.5" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M53.4833 14.1667C56.2979 14.8171 58.8067 16.3968 60.5938 18.6706C62.3809 20.9444 63.3501 23.7698 63.3501 26.6771C63.3501 29.5843 62.3809 32.4097 60.5938 34.6835C58.8067 36.9573 56.2979 38.537 53.4833 39.1875" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="card-title">User Management</h2>  
-                    <p class="card-description">Add, edit, and delete users</p>
-                    <a href="admin-usrmgt.php" style="width: 100%;">
-                        <button class="card-button">Manage users</button>
-                    </a> 
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M36.6667 6.66666H16.6667C13.1305 6.66666 10 9.79714 10 13.3333V66.6667C10 70.2029 13.1305 73.3333 16.6667 73.3333H63.3333C66.8695 73.3333 70 70.2029 70 66.6667V40" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M23.3333 30H30M23.3333 50H56.6667M23.3333 60H56.6667M46.6667 30H56.6667" stroke="#8458B3" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M36.6667 33.3333C38.5076 33.3333 40 31.841 40 30C40 28.1591 38.5076 26.6667 36.6667 26.6667C34.8257 26.6667 33.3333 28.1591 33.3333 30C33.3333 31.841 34.8257 33.3333 36.6667 33.3333Z" fill="#8458B3"/>
-                            <circle cx="58.3333" cy="21.6667" r="11.6667" stroke="#8458B3" stroke-width="4"/>
-                            <path d="M54.4167 21.6667L56.875 24.125L62.25 19.2083" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="card-title">PAPs Evaluation</h2>
-                    <p class="card-description">Track progress of submitted PAPs</p>
-                    <a href="admin-papseval.html" style="width: 100%;">
-                        <button class="card-button">Track PAPs</button>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 66.6667H60C63.6819 66.6667 66.6667 63.6819 66.6667 60V20C66.6667 16.3181 63.6819 13.3333 60 13.3333H20C16.3181 13.3333 13.3333 16.3181 13.3333 20V60C13.3333 63.6819 16.3181 66.6667 20 66.6667Z" stroke="#8458B3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M26.6667 26.6667H53.3333" stroke="#8458B3" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M26.6667 40H53.3333" stroke="#8458B3" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M26.6667 53.3333H53.3333" stroke="#8458B3" stroke-width="4" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h2 class="card-title">Scoresheet</h2>
-                    <p class="card-description">Manage evaluation score sheets</p>
-                    <a href="adminscoresheet.php" style="width: 100%;">
-                        <button class="card-button">Go to Scoresheet</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <div class="menu-popup" id="menu-popup">
             <div class="menu-item" id="logout-btn">Log out</div>
@@ -172,14 +127,55 @@ if (isset($_SESSION['adminID'])) {
             <p class="logout-modal-text">Are you sure you want to log out?</p>
             <div class="logout-modal-buttons">
                 <button class="logout-cancel-btn" id="logout-cancel-btn">Cancel</button>
-                <a href="../../modules/auth/logout.php" class="logout-confirm-btn" id="logout-confirm-btn">Log Out</a>
+                <a href="logout.php" class="logout-confirm-btn" id="logout-confirm-btn">Log Out</a>
             </div>
         </div>
                 
         <div class="overlay" id="overlay"></div>
 
-<script src="../../assets/js/baseUI.js"></script>
+        <main class="main-content">
+        <div class="dashboard-container">
+            <div class="status-section">
+                <div class="status-table">
+                    <div class="status-row">
+                        <div class="status-indicator pending"></div>
+                        <div class="status-label">Pending</div>
+                        <div class="status-count">28</div>
+                        <div class="status-percentage">62.5%</div>
+                    </div>
+                    <div class="status-row">
+                        <div class="status-indicator correction"></div>
+                        <div class="status-label">For correction</div>
+                        <div class="status-count">12</div>
+                        <div class="status-percentage">25%</div>
+                    </div>
+                    <div class="status-row">
+                        <div class="status-indicator completed"></div>
+                        <div class="status-label">Completed</div>
+                        <div class="status-count">6</div>
+                        <div class="status-percentage">12.5%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="chart-container">
+                    <canvas id="donutChart" width="280" height="280"></canvas>
+                    <div class="total-issues">
+                        <div class="total-label">Total Issues</div>
+                        <div class="total-number">46</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<script src="baseUI.js"></script>
 <script src="adminnotifs.js"></script>
+<script src="dashboardUI.js"></script>
+
+
 
 </body>
 </html>

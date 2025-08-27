@@ -50,7 +50,7 @@ if ($search !== '') {
     $stmt = $mysqli->prepare("
         SELECT p.*, 
                EXISTS (
-                   SELECT 1 FROM Certification c WHERE c.papsID = p.papsID
+                   SELECT 1 FROM certification c WHERE c.papsID = p.papsID
                ) AS hasCertificate
         FROM paps p
         WHERE p.userID = ?
@@ -463,4 +463,5 @@ while ($row = $result->fetch_assoc()) {
 
     </script>
 </body>
+
 </html>
